@@ -41,11 +41,7 @@ python -m unittest discover tests -v
 ![Class Diagram](docs/class_diagram.png)
 
 ## Team Members
-| Name                     | ID          | Contribution |
-|--------------------------|-------------|--------------|
-|Joyanto Karmakar          | 251414038   | `main.py` (menu and user input), 
-                                           `result_manager.py` (main logic and CGPA   calculation), 
-                                           `tests/` (unit tests), `README.md`                      | 
-|Shantamoni Datta Dola     | 251773038   | `models.py` (Student and Course classes), 
-                                           `grading.py` (mark to grade and grade point),
-                                            UML class diagram (`docs/`), `.gitignore`              |
+| Name | ID | Contribution |
+|------|----|--------------|
+| Joyanto Karmakar | 251414038 | `main.py` (menu and user input), `result_manager.py` (main logic and CGPA calculation), `tests/` (unit tests), `README.md` |
+| Shantamoni Datta Dola | 251773038 | `models.py` (Student and Course classes), `grading.py` (mark to grade and grade point), UML class diagram (`docs/`), `.gitignore` |
