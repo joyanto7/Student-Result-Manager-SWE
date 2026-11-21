@@ -1,0 +1,37 @@
+digraph UML {
+  rankdir=TB; nodesep=0.8; ranksep=0.9;
+  node [shape=plain, fontname="Helvetica", fontsize=12];
+  edge [fontname="Helvetica", fontsize=11];
+
+  ResultManager [label=<
+  <table border="1" cellborder="0" cellspacing="0" cellpadding="6" bgcolor="#FFFFFF">
+    <tr><td bgcolor="#DCE6F2"><b>ResultManager</b></td></tr>
+    <tr><td align="left" balign="left" sides="T"> + students : dict[str, Student]<br/>+ courses : dict[str, Course]</td></tr>
+    <tr><td align="left" balign="left" sides="T">+ add_student(student_id, name) : None<br/>+ add_course(code, title, credit) : None<br/>+ enter_mark(student_id, course_code, mark) : None<br/>+ calculate_cgpa(student_id) : float<br/>+ get_result_sheet(student_id) : (list, float)</td></tr>
+  </table>>];
+
+  Student [label=<
+  <table border="1" cellborder="0" cellspacing="0" cellpadding="6" bgcolor="#FFFFFF">
+    <tr><td bgcolor="#DCE6F2"><b>Student</b></td></tr>
+    <tr><td align="left" balign="left" sides="T"> + student_id : str<br/>+ name : str<br/>+ marks : dict[str, float]</td></tr>
+    <tr><td align="left" balign="left" sides="T">+ add_mark(course_code, mark) : None</td></tr>
+  </table>>];
+
+  Course [label=<
+  <table border="1" cellborder="0" cellspacing="0" cellpadding="6" bgcolor="#FFFFFF">
+    <tr><td bgcolor="#DCE6F2"><b>Course</b></td></tr>
+    <tr><td align="left" balign="left" sides="T"> + code : str<br/>+ title : str<br/>+ credit : float</td></tr>
+  </table>>];
+
+  grading [label=<
+  <table border="1" cellborder="0" cellspacing="0" cellpadding="6" bgcolor="#FFFFFF">
+    <tr><td bgcolor="#E8E8E8">«module»<br/><b>grading</b></td></tr>
+    <tr><td align="left" balign="left" sides="T">+ GRADE_SCALE : list</td></tr>
+    <tr><td align="left" balign="left" sides="T">+ get_grade(mark) : (str, float)</td></tr>
+  </table>>];
+
+  ResultManager -> Student [arrowhead=none, arrowtail=diamond, dir=back, headlabel="0..*", taillabel="1", labeldistance=2];
+  ResultManager -> Course  [arrowhead=none, arrowtail=diamond, dir=back, headlabel="0..*", taillabel="1", labeldistance=2];
+  ResultManager -> grading [style=dashed, arrowhead=vee, label=" «uses»"];
+  Student -> Course [style=dashed, arrowhead=vee, label=" marks refer to\n course_code", constraint=false];
+}
